@@ -1,0 +1,16 @@
+Rating
+
+Cost
+Cleanliness
+Management
+Time 
+Customer Satisfaction
+Pharmacy
+
+
+Features
+Emergency
+ICU
+Radiology
+
+

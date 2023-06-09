@@ -2,14 +2,15 @@ import spacy
 import pandas as pd
 
 
-df= pd.read_csv("reviews.csv",  encoding='ISO-8859-1')
-values = df['Review'].values
+df= pd.read_csv("4.csv",  encoding='ISO-8859-1')
+values = df['Reviews'].values
 
 values = map(str, values)
+text = ''.join(values)
 
 nlp = spacy.load("en_core_web_sm")
 
-text = ''.join(values)
+
 
 #process
 doc = nlp(text=text)
@@ -25,7 +26,29 @@ for word in doc:
         word_dict[word] = 1
 
 
+def find_cost_rating():
+    positive = word_dict["expensive"] 
+    negative = word_dict["cheap"]
+    average = word_dict["affordable"] 
 
+    total = positive + negative + average
+    sum = positive*5 + negative*1 + average*3
+    print("Cost Rating:")
+    print(sum/total)
+
+def find_customer_sat_Rating():
+    positive = word_dict["good"] + word_dict["great"] + word_dict["best"] + word_dict["satisfied"]
+    negative = word_dict["bad"] + word_dict["worst"] + word_dict["worse"]  + word_dict["disappointed"]
+    average = word_dict["okay"]
+    
+
+    total = positive + negative 
+    sum = positive*5 + negative*1 
+    print("Customer Rating:")
+    print(sum/total)
+
+find_cost_rating()
+find_customer_sat_Rating()
 
 
 sentences = []
@@ -50,4 +73,4 @@ for sentence in top_5:
     summary_text += sentence[1] + ""
 
 
-print(summary_text)
+

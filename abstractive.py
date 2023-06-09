@@ -5,8 +5,8 @@ tokenizer = PegasusTokenizer.from_pretrained("google/pegasus-xsum")
 model = PegasusForConditionalGeneration.from_pretrained("google/pegasus-xsum")
 
 
-df= pd.read_csv("reviews.csv",  encoding='ISO-8859-1')
-values = df['Review'].values
+df= pd.read_csv("4.csv",  encoding='ISO-8859-1')
+values = df['Reviews'].values
 
 values = map(str, values)
 text = ''.join(values)
